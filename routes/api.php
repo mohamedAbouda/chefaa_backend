@@ -20,4 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('pharmacies')->group(function () {
     Route::get('/', 'App\Http\Controllers\Apis\PharmacyController@index');
+    Route::get('/{id}', 'App\Http\Controllers\Apis\PharmacyController@show');
+    Route::post('create/', 'App\Http\Controllers\Apis\PharmacyController@create');
+    Route::post('edit/', 'App\Http\Controllers\Apis\PharmacyController@edit');
+    Route::post('delete/', 'App\Http\Controllers\Apis\PharmacyController@delete');
 });
