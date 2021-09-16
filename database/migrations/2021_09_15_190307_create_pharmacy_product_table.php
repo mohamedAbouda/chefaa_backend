@@ -20,8 +20,6 @@ class CreatePharmacyProductTable extends Migration
 
             $table->unsignedBigInteger('pharmacy_id');
             $table->foreign('pharmacy_id')->references('id')->on('pharmacies');
-
-            $table->timestamps();
         });
     }
 

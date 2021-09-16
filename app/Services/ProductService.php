@@ -12,5 +12,20 @@ class ProductService {
     {
         $this->productRepository = new ProductRepository();
     }
+
+    public function listProducts(array $data)
+    {
+        return $this->productRepository->listProducts($data);
+    }
+
+    public function getProduct(int $id)
+    {
+        return $this->productRepository->getProduct($id);
+    }
+
+    public function delete(array $data)
+    {
+        return $this->productRepository->delete($data);
+    }
 }
 
