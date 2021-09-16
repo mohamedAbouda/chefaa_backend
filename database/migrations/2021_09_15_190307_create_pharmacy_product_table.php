@@ -20,6 +20,9 @@ class CreatePharmacyProductTable extends Migration
 
             $table->unsignedBigInteger('pharmacy_id');
             $table->foreign('pharmacy_id')->references('id')->on('pharmacies');
+
+            $table->float('price')->default(0);
+            $table->integer('quantity')->default(0);
         });
     }
 

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $faker = \Faker\Factory::create();
         // $this->command->info('Generating 1 user');
         // $this->command->info('Email : chefaa@mail.com');
         // $this->command->info('Password : password');
@@ -30,9 +31,13 @@ class DatabaseSeeder extends Seeder
             $products = Product::factory(20)->create();
             $pharmacies = Pharmacy::factory(8)->create();
 
-            $pharmacies->each(function ($pharmacy) use ($products) {
+            $pharmacies->each(function ($pharmacy) use ($products, $faker) {
                 $pharmacy->products()->attach(
-                    $products->random(rand(1, 3))->pluck('id')->toArray()
+                    $products->random(rand(1,3))->pluck('id')->toArray(),
+                    [
+                        'price' => $faker->randomFloat(2, 10, 100),
+                        'quantity' => $faker->numberBetween(1, 100)
+                    ],
                 );
             });
 
