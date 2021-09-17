@@ -125,6 +125,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Default Count of Pharmacies Command.
+    |--------------------------------------------------------------------------
+    |
+    | The default count of cheapest pharmacies command
+    |
+    */
+
+    'pharmacy_default_count_command' => env('PHARMACY_DEFAULT_COUNT_COMMAND', 5),
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |

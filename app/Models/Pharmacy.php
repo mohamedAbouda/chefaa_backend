@@ -10,8 +10,12 @@ class Pharmacy extends Model
     use HasFactory;
 
     protected $table = 'pharmacies';
+
     protected $fillable = [
         'name',  'address'
+    ];
+    protected $hidden = [
+        'pivot'
     ];
 
     public function products()

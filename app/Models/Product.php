@@ -10,11 +10,15 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $appends = ['full_image_url'];
-
+    protected $appends = [
+        'full_image_url',
+    ];
+    protected $hidden = [
+        'pivot',
+    ];
     public function pharmacies()
     {
-        return $this->belongsToMany(Pharmacy::class);
+        return $this->belongsToMany(Pharmacy::class)->withPivot('quantity', 'price');
     }
 
     public function getFullImageUrlAttribute($value)
