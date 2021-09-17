@@ -14,9 +14,9 @@ class Pharmacy extends Model
     protected $fillable = [
         'name',  'address'
     ];
-    protected $hidden = [
-        'pivot'
-    ];
+    // protected $hidden = [
+    //     'pivot'
+    // ];
 
     public function products()
     {

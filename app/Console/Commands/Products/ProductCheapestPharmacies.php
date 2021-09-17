@@ -45,7 +45,7 @@ class ProductCheapestPharmacies extends Command
             ->select('id', 'name', 'price', 'quantity');
         })->first();
 
-        $pharmacies = json_encode(['pharmacies' => $product->pharmacies]);
+        $pharmacies = json_encode(['pharmacies' => $product->pharmacies->makeHidden('pivot')]);
         // add any logic here that uses this variable.
         $this->info($pharmacies);
     }

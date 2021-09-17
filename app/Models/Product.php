@@ -13,9 +13,9 @@ class Product extends Model
     protected $appends = [
         'full_image_url',
     ];
-    protected $hidden = [
-        'pivot',
-    ];
+    // protected $hidden = [
+    //     'pivot',
+    // ];
     public function pharmacies()
     {
         return $this->belongsToMany(Pharmacy::class)->withPivot('quantity', 'price');
