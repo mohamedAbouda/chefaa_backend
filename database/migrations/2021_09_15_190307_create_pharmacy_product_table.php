@@ -16,10 +16,10 @@ class CreatePharmacyProductTable extends Migration
         Schema::create('pharmacy_product', function (Blueprint $table) {
 
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('pharmacy_id');
-            $table->foreign('pharmacy_id')->references('id')->on('pharmacies');
+            $table->foreign('pharmacy_id')->references('id')->on('pharmacies')->onDelete('cascade')->onUpdate('cascade');
 
             $table->float('price')->default(0);
             $table->integer('quantity')->default(0);
