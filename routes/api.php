@@ -29,7 +29,7 @@ Route::prefix('pharmacies')->group(function () {
 Route::prefix('products')->group(function () {
     Route::get('/', 'App\Http\Controllers\Apis\ProductController@index');
     Route::get('/{id}', 'App\Http\Controllers\Apis\ProductController@show');
-    // Route::post('create/', 'App\Http\Controllers\Apis\ProductController@create');
+    Route::post('create/', 'App\Http\Controllers\Apis\ProductController@create');
     // Route::post('edit/', 'App\Http\Controllers\Apis\ProductController@edit');
     Route::post('delete/', 'App\Http\Controllers\Apis\ProductController@delete');
 });

@@ -27,5 +27,10 @@ class ProductService {
     {
         return $this->productRepository->delete($data);
     }
+
+    public function create(array $data)
+    {
+        return $this->productRepository->create($data);
+    }
 }
 

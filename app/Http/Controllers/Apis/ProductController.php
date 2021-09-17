@@ -26,6 +26,12 @@ class ProductController extends Controller
         return $this->makeResponse($this->productService->getProduct($id));
     }
 
+    public function create(Request $request)
+    {
+        return $this->makeResponse($this->productService->create($request->all()));
+
+    }
+
     public function delete(Request $request)
     {
         return $this->makeResponse($this->productService->delete($request->all()));

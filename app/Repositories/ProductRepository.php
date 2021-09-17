@@ -24,4 +24,9 @@ class ProductRepository
     {
         return Product::where('id', $data['id'])->delete();
     }
+
+    public function create(array $data)
+    {
+        return Product::create($data);
+    }
 }
