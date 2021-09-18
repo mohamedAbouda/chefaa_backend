@@ -32,5 +32,10 @@ class ProductService {
     {
         return $this->productRepository->create($data);
     }
+
+    public function edit(array $data)
+    {
+        return $this->productRepository->update($data);
+    }
 }
 

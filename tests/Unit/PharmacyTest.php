@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Pharmacy;
-use App\Repositories\PharmacyRepository;
+use App\Services\PharmacyService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Phar;
@@ -20,8 +20,8 @@ class PharmacyTest extends TestCase
             'address' => $this->generateRandomString(15),
         ];
 
-        $pharmacyRepository = new PharmacyRepository();
-        $pharmacy = $pharmacyRepository->create($data);
+        $pharmacyService = new PharmacyService();
+        $pharmacy = $pharmacyService->create($data);
 
         $this->assertInstanceOf(Pharmacy::class, $pharmacy);
         $this->assertEquals($data['name'], $pharmacy->name);
@@ -29,11 +29,26 @@ class PharmacyTest extends TestCase
     }
 
     /** @test */
+    public function it_can_update_a_pharmacy()
+    {
+        $data = [
+            'id'  => Pharmacy::inRandomOrder()->first()->id,
+            'name' => $this->generateRandomString(10),
+            'address' => $this->generateRandomString(15),
+        ];
+
+        $pharmacyService = new PharmacyService();
+        $pharmacy = $pharmacyService->update($data);
+
+        $this->assertEquals($pharmacy, true);
+    }
+
+    /** @test */
     public function it_can_show_a_pharmacy()
     {
         $pharmacy = Pharmacy::factory()->create();
-        $pharmacyRepository = new PharmacyRepository();
-        $found = $pharmacyRepository->getPhrmacy($pharmacy->id);
+        $pharmacyService = new PharmacyService();
+        $found = $pharmacyService->getPhrmacy($pharmacy->id);
 
         $this->assertInstanceOf(Pharmacy::class, $found);
         $this->assertEquals($found->name, $pharmacy->name);

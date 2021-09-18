@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Apis\CreateProductRequest;
+use App\Http\Requests\Apis\UpdateProductRequest;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 
@@ -26,10 +28,15 @@ class ProductController extends Controller
         return $this->makeResponse($this->productService->getProduct($id));
     }
 
-    public function create(Request $request)
+    public function create(CreateProductRequest  $request)
     {
         return $this->makeResponse($this->productService->create($request->all()));
 
+    }
+
+    public function edit(UpdateProductRequest  $request)
+    {
+        return $this->makeResponse($this->productService->edit($request->all()));
     }
 
     public function delete(Request $request)

@@ -23,6 +23,9 @@ class CreatePharmacyProductTable extends Migration
 
             $table->float('price')->default(0);
             $table->integer('quantity')->default(0);
+
+            $table->unique(['product_id', 'pharmacy_id']);
+
         });
     }
 
