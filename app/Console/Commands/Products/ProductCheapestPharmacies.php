@@ -45,6 +45,11 @@ class ProductCheapestPharmacies extends Command
             ->select('id', 'name', 'price', 'quantity');
         })->first();
 
+        if (!$product) {
+            $this->info('No product found with this id');
+            return;
+        }
+
         $pharmacies = json_encode(['pharmacies' => $product->pharmacies->makeHidden('pivot')]);
         // add any logic here that uses this variable.
         $this->info($pharmacies);
