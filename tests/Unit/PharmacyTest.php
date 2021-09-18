@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Pharmacy;
+use App\Repositories\PharmacyRepository;
 use App\Services\PharmacyService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -11,17 +12,28 @@ use Tests\TestCase;
 
 class PharmacyTest extends TestCase
 {
+    use WithFaker;
+
+    protected $pharmacyService;
+    protected $faker;
+
+    public function setUp() :void
+    {
+        parent::setUp();
+
+        $this->faker = \Faker\Factory::create();
+        $this->pharmacyService = new PharmacyService(new PharmacyRepository());
+    }
 
     /** @test */
     public function it_can_create_a_pharmacy()
     {
         $data = [
-            'name' => $this->generateRandomString(10),
-            'address' => $this->generateRandomString(15),
+            'name' => $this->faker->name,
+            'address' => $this->faker->address,
         ];
 
-        $pharmacyService = new PharmacyService();
-        $pharmacy = $pharmacyService->create($data);
+        $pharmacy = $this->pharmacyService->create($data);
 
         $this->assertInstanceOf(Pharmacy::class, $pharmacy);
         $this->assertEquals($data['name'], $pharmacy->name);
@@ -33,12 +45,11 @@ class PharmacyTest extends TestCase
     {
         $data = [
             'id'  => Pharmacy::inRandomOrder()->first()->id,
-            'name' => $this->generateRandomString(10),
-            'address' => $this->generateRandomString(15),
+            'name' => $this->faker->name,
+            'address' => $this->faker->address,
         ];
 
-        $pharmacyService = new PharmacyService();
-        $pharmacy = $pharmacyService->update($data);
+        $pharmacy = $this->pharmacyService->update($data);
 
         $this->assertEquals($pharmacy, true);
     }
@@ -47,17 +58,10 @@ class PharmacyTest extends TestCase
     public function it_can_show_a_pharmacy()
     {
         $pharmacy = Pharmacy::factory()->create();
-        $pharmacyService = new PharmacyService();
-        $found = $pharmacyService->getPhrmacy($pharmacy->id);
+        $found = $this->pharmacyService->getPhrmacy($pharmacy->id);
 
         $this->assertInstanceOf(Pharmacy::class, $found);
         $this->assertEquals($found->name, $pharmacy->name);
         $this->assertEquals($found->address, $pharmacy->address);
-    }
-
-
-    function generateRandomString($length = 10)
-    {
-        return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
     }
 }
