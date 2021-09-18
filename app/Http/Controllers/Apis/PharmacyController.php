@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Apis;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Apis\CreatePharmacyRequest;
 use App\Http\Requests\Apis\UpdatePharmacyRequest;
+use App\Repositories\PharmacyRepository;
 use App\Services\PharmacyService;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class PharmacyController extends Controller
 
     public function __construct()
     {
-        $this->pharmacyService = new PharmacyService();
+        $this->pharmacyService = new PharmacyService(new PharmacyRepository());
     }
 
     public function index(Request $request)

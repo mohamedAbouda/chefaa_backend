@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Apis;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Apis\CreateProductRequest;
 use App\Http\Requests\Apis\UpdateProductRequest;
+use App\Repositories\ProductRepository;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->productService = new ProductService();
+        $this->productService = new ProductService(new ProductRepository());
     }
 
     public function index(Request $request)

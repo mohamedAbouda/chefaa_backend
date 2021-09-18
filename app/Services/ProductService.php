@@ -2,15 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\ProductRepository;
 
 class ProductService {
 
     protected $productRepository;
 
-    public function __construct()
+    public function __construct($productRepository)
     {
-        $this->productRepository = new ProductRepository();
+        $this->productRepository = $productRepository;
     }
 
     public function listProducts(array $data)

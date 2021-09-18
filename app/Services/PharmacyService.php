@@ -2,16 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\PharmacyRepository;
-
 class PharmacyService
 {
 
     protected $pharmacyRepository;
 
-    public function __construct()
+    public function __construct($pharmacyRepository)
     {
-        $this->pharmacyRepository = new PharmacyRepository();
+        $this->pharmacyRepository = $pharmacyRepository;
     }
 
     public function listPharmacies(array $data)
