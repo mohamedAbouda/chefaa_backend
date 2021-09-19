@@ -22,9 +22,9 @@ class ProductService {
         return $this->productRepository->getProduct($id);
     }
 
-    public function delete(array $data)
+    public function delete(int $id)
     {
-        return $this->productRepository->delete($data);
+        return $this->productRepository->delete($id);
     }
 
     public function create(array $data)

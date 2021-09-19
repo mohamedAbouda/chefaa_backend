@@ -5,15 +5,10 @@ namespace Tests\Unit;
 use App\Models\Pharmacy;
 use App\Repositories\PharmacyRepository;
 use App\Services\PharmacyService;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Phar;
 use Tests\TestCase;
 
 class PharmacyTest extends TestCase
 {
-    use WithFaker;
-
     protected $pharmacyService;
     protected $faker;
 
@@ -63,5 +58,14 @@ class PharmacyTest extends TestCase
         $this->assertInstanceOf(Pharmacy::class, $found);
         $this->assertEquals($found->name, $pharmacy->name);
         $this->assertEquals($found->address, $pharmacy->address);
+    }
+
+    /** @test */
+    public function it_can_destroy_a_pharmacy()
+    {
+        $pharmacy = Pharmacy::factory()->create();
+        $delete = $this->pharmacyService->delete($pharmacy->id);
+
+        $this->assertEquals($delete, true);
     }
 }

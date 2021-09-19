@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Apis\CreatePharmacyRequest;
+use App\Http\Requests\Apis\DeletePharmacyRequest;
 use App\Http\Requests\Apis\UpdatePharmacyRequest;
 use App\Repositories\PharmacyRepository;
 use App\Services\PharmacyService;
@@ -39,8 +40,8 @@ class PharmacyController extends Controller
         return $this->makeResponse($this->pharmacyService->update($request->all()));
     }
 
-    public function delete(Request $request)
+    public function delete(DeletePharmacyRequest $request)
     {
-        return $this->makeResponse($this->pharmacyService->delete($request->all()));
+        return $this->makeResponse($this->pharmacyService->delete($request->input('id')));
     }
 }

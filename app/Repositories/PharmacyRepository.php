@@ -30,8 +30,8 @@ class PharmacyRepository
         return Pharmacy::create($data);
     }
 
-    public function delete(array $data) :int
+    public function delete(int $id) :int
     {
-        return Pharmacy::where('id', $data['id'])->delete();
+        return Pharmacy::where('id', $id)->delete();
     }
 }

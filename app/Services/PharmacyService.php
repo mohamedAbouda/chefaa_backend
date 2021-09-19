@@ -32,8 +32,8 @@ class PharmacyService
         return $this->pharmacyRepository->create($data);
     }
 
-    public function delete(array $data)
+    public function delete(int $id)
     {
-        return $this->pharmacyRepository->delete($data);
+        return $this->pharmacyRepository->delete($id);
     }
 }

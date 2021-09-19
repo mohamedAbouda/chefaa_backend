@@ -21,9 +21,9 @@ class ProductRepository
         })->first();
     }
 
-    public function delete(array $data) :int
+    public function delete(int $id) :int
     {
-        return Product::where('id', $data['id'])->delete();
+        return Product::where('id', $id)->delete();
     }
 
     public function create(array $data) :Product

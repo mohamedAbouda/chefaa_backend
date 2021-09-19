@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Apis;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Apis\CreateProductRequest;
+use App\Http\Requests\Apis\DeleteProductRequest;
 use App\Http\Requests\Apis\UpdateProductRequest;
 use App\Repositories\ProductRepository;
 use App\Services\ProductService;
@@ -40,8 +41,8 @@ class ProductController extends Controller
         return $this->makeResponse($this->productService->edit($request->all()));
     }
 
-    public function delete(Request $request)
+    public function delete(DeleteProductRequest $request)
     {
-        return $this->makeResponse($this->productService->delete($request->all()));
+        return $this->makeResponse($this->productService->delete($request->input('id')));
     }
 }
