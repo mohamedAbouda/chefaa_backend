@@ -37,16 +37,21 @@ This command will show the N numbers of cheapes pharmacies of any given product
 This application has 2 unit tests files (PharmacyTest, ProductTest) each file has 4 main crud tests.
 
 >  Tests\Unit\PharmacyTest
-  ✓ it can create a pharmacy
-  ✓ it can update a pharmacy
-  ✓ it can show a pharmacy
-  ✓ it can destroy a pharmacy
+
+
+ - ✓ it can create a pharmacy
+ - ✓ it can update a pharmacy
+ - ✓ it canshow a pharmacy
+ - ✓ it can destroy a pharmacy
+
 
 >    Tests\Unit\ProductTest
-      ✓ it can create a product
-       ✓ it can update a product
-       ✓ it can show a product
-       ✓ it can destroy a product
+
+
+ - ✓ it can create a product
+ - ✓ it can update a product
+ - ✓ it can show a product
+ - ✓ it can destroy a product
 
 To run the unit tests please run
 
