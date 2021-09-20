@@ -1,3 +1,4 @@
+
 # chefaa back-end
 Chefaa is online ordering app
 ## Project Requirements
@@ -31,7 +32,15 @@ This command will show the N numbers of cheapes pharmacies of any given product
     php artisan product:cheapes-pharmacies --product-id=1
 
     php artisan product:cheapes-pharmacies --product-id=1 --pharmacies-limit=4
+    
+#### Seeding
+This seeders in this project will seed 50000 pharmacies and 20000 products and the relations between them.
+You can see the info while seeding with the rows number generated.
+You can stop the seeders at any time you want.
+##### example
 
+    php artisan db:seed
+**Note: This command may take a while 
 
 #### Testing
 This application has 2 unit tests files (PharmacyTest, ProductTest) each file has 4 main crud tests.
