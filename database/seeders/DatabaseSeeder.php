@@ -16,24 +16,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-        // $this->command->info('Generating 1 user');
-        // $this->command->info('Email : chefaa@mail.com');
-        // $this->command->info('Password : password');
-        // $this->command->info('___________________________');
         $this->command->info('Seeding 50000 Products');
         $this->command->info('Seeding 2000 Pharmacies');
         $this->command->info('Note : this may take some a while');
         $this->command->info('You may stop the command at any time');
         $this->command->info('Start generating products and pharmacies please wait and read the info below');
 
-        for($i = 1; $i <= 2500 ; $i++){
+        for ($i = 1; $i <= 2500; $i++) {
 
             $products = Product::factory(20)->create();
             $pharmacies = Pharmacy::factory(8)->create();
 
             $pharmacies->each(function ($pharmacy) use ($products, $faker) {
                 $pharmacy->products()->attach(
-                    $products->random(rand(1,3))->pluck('id')->toArray(),
+                    $products->random(rand(1, 3))->pluck('id')->toArray(),
                     [
                         'price' => $faker->randomFloat(2, 10, 100),
                         'quantity' => $faker->numberBetween(1, 100)
