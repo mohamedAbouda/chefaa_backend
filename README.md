@@ -2,9 +2,9 @@
 Chefaa is online ordering app
 ## Project Requirements
 
-> PHP >= 7.4
-> git
-> mysql 5.7.33
+- > PHP >= 7.4
+- > git
+- > mysql 5.7.33
 
 ## How to run the project
     git clone https://github.com/mohamedAbouda/chefaa_backend.git
