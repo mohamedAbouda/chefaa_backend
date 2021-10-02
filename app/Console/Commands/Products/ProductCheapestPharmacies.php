@@ -29,7 +29,7 @@ class ProductCheapestPharmacies extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle() :void
     {
         $productId = (int) $this->option('product-id');
         $pharmaciesLimit = (int) $this->option('pharmacies-limit') ;
