@@ -32,7 +32,7 @@ class ProductCheapestPharmacies extends Command
     public function handle()
     {
         $productId = (int) $this->option('product-id');
-        $pharmaciesLimit = (int) $this->option('pharmacies-limit');
+        $pharmaciesLimit = (int) $this->option('pharmacies-limit') ;
 
         if (empty($productId)) {
             $this->info('Please provide Product Id');
