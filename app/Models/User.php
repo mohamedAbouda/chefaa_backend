@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $appends = ['fadsfasd'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
