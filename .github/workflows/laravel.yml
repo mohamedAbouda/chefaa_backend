@@ -26,3 +26,5 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: PHPCS Code Review
       uses: rtCamp/action-phpcs-code-review@v2.1.0
+      with:
+        github_token: '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'
