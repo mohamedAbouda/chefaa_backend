@@ -23,6 +23,7 @@ class ProductTest extends TestCase
     /** @test */
     public function it_can_create_a_product()
     {
+        $var = null;
         $data = [
             'title'       => $this->faker->realText(20),
             'description' => $this->faker->realText(200),
